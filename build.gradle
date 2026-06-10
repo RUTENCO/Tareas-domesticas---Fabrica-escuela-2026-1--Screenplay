@@ -1,12 +1,7 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-}
-
 plugins {
-	id 'io.github.jumosqu12.screenplayarchitecture' version '2.0.1'
-	id 'java'
+    id 'io.github.jumosqu12.screenplayarchitecture' version '2.0.1'
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '4.1.3'
+    id 'java'
     id 'eclipse'
     id 'idea'
 }
@@ -23,12 +18,12 @@ repositories {
 }
 
 ext {
-    serenityVersion = '4.1.0'
-    serenityCucumberVersion = '4.1.0'
-    lombokVersion = '1.18.22'
+    serenityVersion = '4.1.3'
+    serenityCucumberVersion = '4.1.3'
+    lombokVersion = '1.18.32'
     junit = '4.13.2'
     hamcrest = '1.3'
-    serenityWebVersion = '4.1.0'
+    serenityWebVersion = '4.1.3'
 }
 
 dependencies {
@@ -39,23 +34,25 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:2.0.5'
     implementation "net.serenity-bdd:serenity-screenplay-webdriver:$rootProject.ext.serenityWebVersion"
 
-    //Test compilation
+    // Test compilation
     testImplementation "junit:junit:$rootProject.ext.junit"
     testImplementation "org.hamcrest:hamcrest-all:$rootProject.ext.hamcrest"
-    implementation 'org.slf4j:slf4j-simple:2.0.5'
     testImplementation("io.github.bonigarcia:webdrivermanager:5.4.1")
 
-    //Lombok dependencies
+    // Lombok dependencies
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
-    annotationProcessor  "org.projectlombok:lombok:${lombokVersion}"
-    testCompileOnly  "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
-    //Additional library
+    // Additional library
     implementation group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.12.0'
+}
 
+serenity {
+    reports = ["html"]
 }
 
 tasks.named('test') {
-    // System configs
-
+    // Configuraciones del sistema para la ejecución de pruebas
 }
