@@ -9,6 +9,23 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import org.openqa.selenium.Keys;
 
+/**
+ * Task orquestadora que solicita recuperación de contraseña.
+ *
+ * Patrón Screenplay (SRP):
+ * - Responsabilidad ÚNICA: orquestar el envío de solicitud de recuperación
+ * - ORQUESTACIÓN: Delega TODAS las acciones técnicas a Interactions:
+ *   ✓ TipearTexto.enCampo() - no usa Enter.theValue() nativo
+ *   ✓ WaitExplicitly.forSeconds() - no usa Thread.sleep() nativo
+ *   ✓ PresionarTecla.en() - no usa Hit.the() o SendKeys() nativo
+ *
+ * - No hay condicionales técnicas ni llamadas directas a Serenity
+ * - Cadena de acciones atómica: Email → Esperar → Presionar ENTER
+ *
+ * Factory Pattern:
+ * - Constructor privado, factory method 'forEmail(email)'
+ * - Parámetro encapsulado: email
+ */
 public class RequestPasswordRecovery implements Task {
 
     private final String email;

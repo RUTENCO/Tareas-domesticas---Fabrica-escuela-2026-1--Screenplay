@@ -6,6 +6,17 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 
+/**
+ * Task orquestadora que realiza logout desde el dashboard.
+ *
+ * Patrón Screenplay (SRP):
+ * - Responsabilidad ÚNICA: hacer clic en el botón de logout
+ * - ORQUESTACIÓN: Delega la acción técnica a Interaction:
+ *   ✓ HacerClick.en() - no usa Click.on() nativo
+ *
+ * - No hay condicionales técnicas ni llamadas directas a Serenity
+ * - Simple clic en LOGOUT_BUTTON
+ */
 public class LogoutFromDashboard implements Task {
 
     public static LogoutFromDashboard now() {
