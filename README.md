@@ -36,16 +36,30 @@ Comando recomendado para ejecutar y dejar el reporte agregado listo:
 
 ## Ejecutar un escenario específico
 
-Puedes filtrar por nombre exacto (o parcial) del Scenario/Scenario Outline:
+Puedes filtrar por nombre exacto (o parcial) del Scenario/Scenario Outline.
+
+En PowerShell, cuando el valor tiene espacios, usa comillas simples alrededor de toda la propiedad `-D`:
 
 ```powershell
-.\gradlew.bat test -Dcucumber.filter.name="CP-006 Successful login with valid credentials"
+.\gradlew.bat test '-Dcucumber.filter.name=CP-006 Successful login with valid credentials'
+```
+
+Alternativa recomendada en PowerShell (modo literal con `--%`):
+
+```powershell
+.\gradlew.bat --% test -Dcucumber.filter.name="CP-006 Successful login with valid credentials"
 ```
 
 También funciona con una parte del nombre, por ejemplo:
 
 ```powershell
-.\gradlew.bat test -Dcucumber.filter.name="CP-009"
+.\gradlew.bat test '-Dcucumber.filter.name=CP-009'
+```
+
+Si Gradle muestra `BUILD SUCCESSFUL` y `up-to-date` sin abrir navegador, no ejecutó pruebas (usó caché). Para forzar la ejecución real:
+
+```powershell
+.\gradlew.bat test '-Dcucumber.filter.name=CP-006 Successful login with valid credentials' --rerun-tasks
 ```
 
 ## Modificar los tiempos de espera visual

@@ -54,5 +54,16 @@ serenity {
 }
 
 tasks.named('test') {
-    // Configuraciones del sistema para la ejecución de pruebas
+    // Forward Cucumber system properties from Gradle CLI to the forked test JVM.
+    ['cucumber.filter.name', 'cucumber.filter.tags', 'cucumber.features', 'cucumber.glue'].each { key ->
+        def value = System.getProperty(key)
+        if (value != null && !value.isBlank()) {
+            systemProperty key, value
+        }
+    }
+
+    // When a Cucumber filter is provided, force test execution instead of using up-to-date cache.
+    if (System.getProperty('cucumber.filter.name')?.trim()) {
+        outputs.upToDateWhen { false }
+    }
 }
