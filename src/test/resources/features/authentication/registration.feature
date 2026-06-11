@@ -15,7 +15,7 @@ Feature: User registration
       | expectedPath |
       | /dashboard   |
 
-  Scenario Outline: CP-002 / CP-003 / CP-005 Registration is rejected for invalid data combinations
+  Scenario Outline: CP-002 / CP-003-a / CP-005 Registration is rejected for invalid data combinations
     When the actor attempts to register with name "<name>", email "<email>" and password "<password>"
     Then the registration <field> field should have validation state "<state>"
 
@@ -28,7 +28,7 @@ Feature: User registration
       | Empty Email  |                           | Abcd1234! | email    | valueMissing |
       | Empty Pass   | empty-pass@testmail.com   |           | password | valueMissing |
 
-  Scenario Outline: CP-003 Password at minimum boundary is accepted (8 characters)
+  Scenario Outline: CP-003-b Password at minimum boundary is accepted (8 characters)
     When the actor attempts to register with name "<name>", email "<email>" and password "<password>"
     Then the actor should be redirected to "<expectedPath>"
 
