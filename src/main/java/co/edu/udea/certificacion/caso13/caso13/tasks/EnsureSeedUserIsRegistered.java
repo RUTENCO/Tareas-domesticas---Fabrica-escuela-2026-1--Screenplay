@@ -58,7 +58,7 @@ public class EnsureSeedUserIsRegistered implements Task {
         // Lógica de negocio: usuario nuevo debe limpiarse para mantener precondiciones
         if (!isAlreadyRegistered) {
             actor.attemptsTo(
-                    WaitExplicitly.forSeconds(1),
+                    WaitExplicitly.forSeconds(2),
                     LogoutFromDashboard.now()
             );
         }

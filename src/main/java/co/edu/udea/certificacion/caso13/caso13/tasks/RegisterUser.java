@@ -41,11 +41,11 @@ public class RegisterUser implements Task {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 TipearTexto.enCampo(userData.getName(), RegisterPageUI.NAME_INPUT),
-                WaitExplicitly.forSeconds(1),
+                WaitExplicitly.forSeconds(2),
                 TipearTexto.enCampo(userData.getEmail(), RegisterPageUI.EMAIL_INPUT),
-                WaitExplicitly.forSeconds(1),
+                WaitExplicitly.forSeconds(2),
                 TipearTexto.enCampo(userData.getPassword(), RegisterPageUI.PASSWORD_INPUT),
-                WaitExplicitly.forSeconds(1),
+                WaitExplicitly.forSeconds(2),
                 HacerClick.en(RegisterPageUI.JOIN_BUTTON)
         );
     }

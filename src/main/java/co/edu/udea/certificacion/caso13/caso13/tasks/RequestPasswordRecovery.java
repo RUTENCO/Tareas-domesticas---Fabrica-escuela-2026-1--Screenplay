@@ -42,7 +42,7 @@ public class RequestPasswordRecovery implements Task {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 TipearTexto.enCampo(email, ForgotPasswordPageUI.EMAIL_INPUT),
-                WaitExplicitly.forSeconds(1),
+                WaitExplicitly.forSeconds(2),
                 PresionarTecla.en(Keys.ENTER, ForgotPasswordPageUI.EMAIL_INPUT)
         );
     }
