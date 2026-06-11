@@ -43,9 +43,9 @@ public class LoginWithCredentials implements Task {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 TipearTexto.enCampo(email, LoginPageUI.EMAIL_INPUT),
-                WaitExplicitly.forSeconds(1),
+                WaitExplicitly.forSeconds(2),
                 TipearTexto.enCampo(password, LoginPageUI.PASSWORD_INPUT),
-                WaitExplicitly.forSeconds(1),
+                WaitExplicitly.forSeconds(2),
                 HacerClick.en(LoginPageUI.SIGN_IN_BUTTON)
         );
     }
